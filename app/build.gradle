@@ -39,7 +39,9 @@ dependencies {
             "androidx.room:room-ktx:$room_version",
             "org.koin:koin-android:$koin_version",
             "org.koin:koin-androidx-scope:$koin_version",
-            "org.koin:koin-androidx-viewmodel:$koin_version"
+            "org.koin:koin-androidx-viewmodel:$koin_version",
+            "me.dm7.barcodescanner:zxing:$barcode_scanner_version",
+            "com.karumi:dexter:$dexter_permissions_version"
     kapt "androidx.room:room-compiler:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
     testImplementation "junit:junit:$junit_version"
