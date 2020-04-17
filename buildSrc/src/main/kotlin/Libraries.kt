@@ -1,5 +1,3 @@
-package src.main.kotlin
-
 object Libraries {
 
     private object Versions {
@@ -9,17 +7,19 @@ object Libraries {
         const val lifecycle = "2.2.0"
         const val navigation = "2.2.1"
         const val room = "2.2.5"
-        const val koin = "2.0.1"
+        const val kodein = "6.5.1"
+        const val coroutinesAndroid = "1.3.2"
         const val barcodeScanner = "1.9.8"
         const val dexterPermissions = "6.0.2"
     }
 
     const val kotlinStdLib =
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${BuildPlugins.Versions.kotlin}"
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Plugins.Versions.kotlin}"
+    const val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Plugins.Versions.kotlin}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-    const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
+    const val coreKtx = "androidx.core:core-ktx:${Versions.ktx}"
     const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     const val navigationRuntimeKtx =
@@ -31,9 +31,10 @@ object Libraries {
         "androidx.navigation:navigation-common-ktx:${Versions.navigation}"
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
-    const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
-    const val koinScope = "org.koin:koin-androidx-scope:${Versions.koin}"
-    const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+    const val kodein = "org.kodein.di:kodein-di-generic-jvm:${Versions.kodein}"
+    const val kodeinAndroidX = "org.kodein.di:kodein-di-framework-android-x:${Versions.kodein}"
+    const val coroutinesAndroid =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesAndroid}"
     const val barcodeScanner = "me.dm7.barcodescanner:zxing:${Versions.barcodeScanner}"
     const val dexterPermissions = "com.karumi:dexter:${Versions.dexterPermissions}"
 }

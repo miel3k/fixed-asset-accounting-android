@@ -1,3 +1,3 @@
 rootProject.name = "Fixed Asset Accounting"
 rootProject.buildFileName = "build.gradle.kts"
-include(":app")
+include(*Modules.getAllModules().toTypedArray())

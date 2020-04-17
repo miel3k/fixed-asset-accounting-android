@@ -1,6 +1,4 @@
-package src.main.kotlin
-
-object BuildPlugins {
+object Plugins {
 
     object Versions {
         const val kotlin = "1.3.71"

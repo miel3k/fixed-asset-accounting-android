@@ -6,11 +6,11 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath (src.main.kotlin.BuildPlugins.androidGradlePlugin)
-        classpath (src.main.kotlin.BuildPlugins.kotlinGradlePlugin)
-        classpath (src.main.kotlin.BuildPlugins.androidSafeArgs)
+        classpath (Plugins.androidGradlePlugin)
+        classpath (Plugins.kotlinGradlePlugin)
+        classpath (Plugins.androidSafeArgs)
         // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        // in the individual module build.gradle.kts files
     }
 }
 

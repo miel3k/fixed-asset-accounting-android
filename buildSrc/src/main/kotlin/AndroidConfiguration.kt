@@ -1,5 +1,3 @@
-package src.main.kotlin
-
 object AndroidConfiguration {
 
     const val compileSdkVersion = 29

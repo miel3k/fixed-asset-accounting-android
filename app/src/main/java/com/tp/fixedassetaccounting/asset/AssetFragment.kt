@@ -12,11 +12,8 @@ import com.tp.fixedassetaccounting.barcode.BarcodeActivity
 import com.tp.fixedassetaccounting.utils.requestPermission
 import com.tp.fixedassetaccounting.utils.toast
 import kotlinx.android.synthetic.main.fragment_asset.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AssetFragment : Fragment() {
-
-    private val viewModel by viewModel<AssetViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

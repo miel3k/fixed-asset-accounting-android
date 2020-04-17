@@ -1,5 +1,3 @@
-package src.main.kotlin
-
 object TestLibraries {
 
     private object Versions {
