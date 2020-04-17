@@ -1,57 +1,62 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'androidx.navigation.safeargs.kotlin'
+plugins {
+    id(src.main.kotlin.BuildPlugins.androidApplication)
+    id(src.main.kotlin.BuildPlugins.kotlinAndroid)
+    id(src.main.kotlin.BuildPlugins.kotlinAndroidExtensions)
+    id(src.main.kotlin.BuildPlugins.kotlinKapt)
+    id(src.main.kotlin.BuildPlugins.kotlinAndroidSafeArgs)
+}
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion(src.main.kotlin.AndroidConfiguration.compileSdkVersion)
     defaultConfig {
-        applicationId "com.tp.fixedassetaccounting"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = src.main.kotlin.AndroidConfiguration.applicationId
+        minSdkVersion(src.main.kotlin.AndroidConfiguration.minSdkVersion)
+        targetSdkVersion(src.main.kotlin.AndroidConfiguration.targetSdkVersion)
+        buildToolsVersion(src.main.kotlin.AndroidConfiguration.buildToolsVersion)
+        versionCode = src.main.kotlin.AndroidConfiguration.versionCode
+        versionName = src.main.kotlin.AndroidConfiguration.versionName
+        testInstrumentationRunner = src.main.kotlin.AndroidConfiguration.testInstrumentationRunner
     }
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        getByName(src.main.kotlin.AndroidConfiguration.BuildType.Release.name) {
+            isMinifyEnabled = src.main.kotlin.AndroidConfiguration.BuildType.Release.isMinifyEnabled
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar']),
-            "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
-            "androidx.appcompat:appcompat:$app_compat_version",
-            "androidx.core:core-ktx:$core_ktx_version",
-            "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
-            "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
-            "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
-            "androidx.navigation:navigation-runtime-ktx:$navigation_version",
-            "androidx.navigation:navigation-fragment-ktx:$navigation_version",
-            "androidx.navigation:navigation-ui-ktx:$navigation_version",
-            "androidx.navigation:navigation-common-ktx:$navigation_version",
-            "androidx.room:room-runtime:$room_version",
-            "androidx.room:room-ktx:$room_version",
-            "org.koin:koin-android:$koin_version",
-            "org.koin:koin-androidx-scope:$koin_version",
-            "org.koin:koin-androidx-viewmodel:$koin_version",
-            "me.dm7.barcodescanner:zxing:$barcode_scanner_version",
-            "com.karumi:dexter:$dexter_permissions_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    testImplementation "androidx.room:room-testing:$room_version"
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "androidx.test.ext:junit:$junit_ext_version",
-            "androidx.test.espresso:espresso-core:$espresso_version"
+    implementation(src.main.kotlin.Libraries.kotlinStdLib)
+    implementation(src.main.kotlin.Libraries.appCompat)
+    implementation(src.main.kotlin.Libraries.ktxCore)
+    implementation(src.main.kotlin.Libraries.constraintLayout)
+    implementation(src.main.kotlin.Libraries.lifecycleExtensions)
+    implementation(src.main.kotlin.Libraries.viewModelKtx)
+    implementation(src.main.kotlin.Libraries.navigationRuntimeKtx)
+    implementation(src.main.kotlin.Libraries.navigationFragmentKtx)
+    implementation(src.main.kotlin.Libraries.navigationUiKtx)
+    implementation(src.main.kotlin.Libraries.navigationCommonKtx)
+    implementation(src.main.kotlin.Libraries.roomRuntime)
+    implementation(src.main.kotlin.Libraries.roomKtx)
+    implementation(src.main.kotlin.Libraries.koinAndroid)
+    implementation(src.main.kotlin.Libraries.koinScope)
+    implementation(src.main.kotlin.Libraries.koinViewModel)
+    implementation(src.main.kotlin.Libraries.barcodeScanner)
+    implementation(src.main.kotlin.Libraries.dexterPermissions)
+
+    testImplementation(src.main.kotlin.TestLibraries.junit)
+    testImplementation(src.main.kotlin.TestLibraries.room)
+    androidTestImplementation(src.main.kotlin.TestLibraries.junitExt)
+    androidTestImplementation(src.main.kotlin.TestLibraries.testRunner)
+    androidTestImplementation(src.main.kotlin.TestLibraries.espresso)
 }

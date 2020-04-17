@@ -1,2 +1,3 @@
-rootProject.name='Fixed Asset Accounting'
-include ':app'
+rootProject.name = "Fixed Asset Accounting"
+rootProject.buildFileName = "build.gradle.kts"
+include(":app")
