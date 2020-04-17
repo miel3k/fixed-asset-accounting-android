@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Fixed Asset Accounting</string>
+    <string name="title_feature_asset">Asset</string>
 </resources>

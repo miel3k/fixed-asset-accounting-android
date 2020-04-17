@@ -10,6 +10,7 @@ object Plugins {
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val androidSafeArgs =
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.safeArgs}"
+    const val androidDynamicFeature = "com.android.dynamic-feature"
     const val androidApplication = "com.android.application"
     const val kotlinAndroid = "kotlin-android"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
