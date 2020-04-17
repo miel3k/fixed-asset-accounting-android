@@ -1,4 +1,4 @@
-package com.tp.fixedassetaccounting.asset
+package com.tp.fixedassetaccounting.feature.asset.presentation
 
 import android.Manifest
 import android.content.Intent
@@ -7,13 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.tp.fixedassetaccounting.R
-import com.tp.fixedassetaccounting.barcode.BarcodeActivity
-import com.tp.fixedassetaccounting.utils.requestPermission
-import com.tp.fixedassetaccounting.utils.toast
+import com.tp.feature_asset.R
+import com.tp.fixedassetaccounting.core.extension.requestPermission
+import com.tp.fixedassetaccounting.core.extension.toast
 import kotlinx.android.synthetic.main.fragment_asset.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
-class AssetFragment : Fragment() {
+class AssetFragment : Fragment(), KodeinAware {
+
+    override val kodein by kodein()
+
+    private val viewModel: AssetViewModel by instance()
 
     override fun onCreateView(
         inflater: LayoutInflater,

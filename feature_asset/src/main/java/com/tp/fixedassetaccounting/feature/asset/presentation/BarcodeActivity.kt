@@ -1,4 +1,4 @@
-package com.tp.fixedassetaccounting.barcode
+package com.tp.fixedassetaccounting.feature.asset.presentation
 
 import android.content.Intent
 import android.os.Bundle

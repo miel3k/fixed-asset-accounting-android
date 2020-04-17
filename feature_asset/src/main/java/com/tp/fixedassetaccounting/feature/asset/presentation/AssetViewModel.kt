@@ -1,4 +1,4 @@
-package com.tp.fixedassetaccounting.asset
+package com.tp.fixedassetaccounting.feature.asset.presentation
 
 import androidx.lifecycle.ViewModel
 

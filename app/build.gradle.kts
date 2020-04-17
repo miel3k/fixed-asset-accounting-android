@@ -51,8 +51,6 @@ dependencies {
     implementation(Libraries.navigationCommonKtx)
     implementation(Libraries.roomRuntime)
     implementation(Libraries.roomKtx)
-    implementation(Libraries.barcodeScanner)
-    implementation(Libraries.dexterPermissions)
 
     testImplementation(TestLibraries.junit)
     testImplementation(TestLibraries.room)

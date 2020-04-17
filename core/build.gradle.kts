@@ -51,4 +51,5 @@ dependencies {
     api(Libraries.lifecycleExtensions)
     api(Libraries.viewModelKtx)
     api(Libraries.coroutinesAndroid)
+    api(Libraries.dexterPermissions)
 }

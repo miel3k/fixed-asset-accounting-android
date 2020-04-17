@@ -1,4 +1,4 @@
-package com.tp.fixedassetaccounting.utils
+package com.tp.fixedassetaccounting.core.extension
 
 import android.content.Context
 import android.widget.Toast
