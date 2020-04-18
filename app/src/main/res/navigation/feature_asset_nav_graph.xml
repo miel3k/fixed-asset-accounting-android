@@ -7,6 +7,15 @@
     <fragment
         android:id="@+id/asset_fragment"
         android:name="com.tp.fixedassetaccounting.feature.asset.presentation.assets.view.AssetsFragment"
+        android:label="Assets">
+        <action
+            android:id="@+id/openNewAssetFragment"
+            app:destination="@id/new_asset_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/new_asset_fragment"
+        android:name="com.tp.fixedassetaccounting.feature.asset.presentation.newasset.view.NewAssetFragment"
         android:label="Assets" />
 
 </navigation>
