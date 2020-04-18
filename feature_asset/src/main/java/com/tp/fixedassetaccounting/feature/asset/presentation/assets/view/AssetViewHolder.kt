@@ -21,7 +21,8 @@ internal class AssetViewHolder(
     }
 
     private fun setupCode(code: String) {
-        itemView.tv_code.text = code
+        val codeText = "Code: $code"
+        itemView.tv_code.text = codeText
     }
 
     private fun setupClickListener(asset: AssetDomainModel) {
