@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/asset_fragment"
-        android:name="com.tp.fixedassetaccounting.feature.asset.presentation.AssetFragment"
-        android:label="Blank" />
+        android:name="com.tp.fixedassetaccounting.feature.asset.presentation.assets.view.AssetsFragment"
+        android:label="Assets" />
 
 </navigation>

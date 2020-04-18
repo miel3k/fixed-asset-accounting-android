@@ -1,4 +1,4 @@
-package com.tp.fixedassetaccounting.feature.asset.presentation
+package com.tp.fixedassetaccounting.feature.asset.presentation.newasset.view
 
 import android.content.Intent
 import android.os.Bundle

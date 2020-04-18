@@ -1,4 +1,4 @@
-package com.tp.fixedassetaccounting.feature.asset.presentation
+package com.tp.fixedassetaccounting.feature.asset.presentation.newasset.view
 
 import android.Manifest
 import android.content.Intent
@@ -10,22 +10,23 @@ import androidx.fragment.app.Fragment
 import com.tp.feature_asset.R
 import com.tp.fixedassetaccounting.core.extension.requestPermission
 import com.tp.fixedassetaccounting.core.extension.toast
-import kotlinx.android.synthetic.main.fragment_asset.*
+import com.tp.fixedassetaccounting.feature.asset.presentation.newasset.viewmodel.NewAssetViewModel
+import kotlinx.android.synthetic.main.fragment_new_asset.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 
-class AssetFragment : Fragment(), KodeinAware {
+class NewAssetFragment : Fragment(), KodeinAware {
 
     override val kodein by kodein()
 
-    private val viewModel: AssetViewModel by instance()
+    private val viewModel: NewAssetViewModel by instance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_asset, container, false)
+    ): View = inflater.inflate(R.layout.fragment_new_asset, container, false)
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == BarcodeActivity.REQUEST_CODE) {

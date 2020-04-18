@@ -5,7 +5,7 @@ import org.kodein.di.Kodein
 
 object KodeinModules {
 
-    private const val featurePackagePrefix = "com.igorwojda.showcase.feature"
+    private const val featurePackagePrefix = "com.tp.fixedassetaccounting.feature"
 
     private val featureModules = BuildConfig.FEATURE_MODULE_NAMES
         .map { "$featurePackagePrefix.$it.FeatureKodeinModule" }
