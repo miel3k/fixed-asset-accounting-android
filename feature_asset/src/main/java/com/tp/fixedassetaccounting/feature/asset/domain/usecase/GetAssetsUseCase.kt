@@ -9,7 +9,7 @@ internal class GetAssetsUseCase {
     suspend fun execute(): List<AssetDomainModel> {
         return listOf(
             AssetDomainModel(UUID.randomUUID().toString(), "Notebook", "00000000"),
-            AssetDomainModel(UUID.randomUUID().toString(), "Monitor", "11111111")
+            AssetDomainModel(UUID.randomUUID().toString(), "Macbook", "11111111")
         )
         //return assetRepository.getAssets()
     }

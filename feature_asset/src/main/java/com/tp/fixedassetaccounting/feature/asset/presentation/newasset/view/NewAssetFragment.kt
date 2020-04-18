@@ -37,17 +37,23 @@ class NewAssetFragment : Fragment(), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tv_message.text = "Asset Fragment"
         setupScanButton()
+        setupAddButton()
     }
 
     private fun setupScanButton() {
-        btn_scan.setOnClickListener {
+        tv_scan.setOnClickListener {
             activity?.requestPermission(
                 Manifest.permission.CAMERA,
                 onGranted = ::startBarcodeActivity,
                 onDenied = { toast("No camera permission") }
             )
+        }
+    }
+
+    private fun setupAddButton() {
+        btn_add.setOnClickListener {
+            toast("Add clicked")
         }
     }
 
