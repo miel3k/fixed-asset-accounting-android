@@ -23,6 +23,7 @@ internal class AssetsViewModel(private val getAssetsUseCase: GetAssetsUseCase) :
     }
 
     private fun getAssets() {
+        mutableState.value = ViewState(isLoading = true, isError = false, assets = listOf())
         viewModelScope.launch {
             val assets = getAssetsUseCase.execute()
             mutableState.value = if (assets.isNotEmpty()) {

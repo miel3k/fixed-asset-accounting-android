@@ -9,7 +9,7 @@ internal fun AssetDomainModel.toDataModel(): AssetDataModel {
     return AssetDataModel(
         assetId = id,
         serialNumber = code,
-        categoryId = "testCategoryId",
+        categoryId = name,
         quantity = 1,
         purchaseDate = Instant.now().toString()
     )

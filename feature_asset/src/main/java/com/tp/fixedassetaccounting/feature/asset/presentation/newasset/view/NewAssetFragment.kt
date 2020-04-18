@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.tp.feature_asset.R
+import com.tp.fixedassetaccounting.core.extension.observe
 import com.tp.fixedassetaccounting.core.extension.requestPermission
 import com.tp.fixedassetaccounting.core.extension.toast
 import com.tp.fixedassetaccounting.feature.asset.presentation.newasset.viewmodel.NewAssetViewModel
@@ -39,6 +42,7 @@ class NewAssetFragment : Fragment(), KodeinAware {
         super.onViewCreated(view, savedInstanceState)
         setupScanButton()
         setupAddButton()
+        setupStateObserver()
     }
 
     private fun setupScanButton() {
@@ -53,8 +57,22 @@ class NewAssetFragment : Fragment(), KodeinAware {
 
     private fun setupAddButton() {
         btn_add.setOnClickListener {
-            viewModel.addAsset()
-            toast("Add clicked")
+            val name = et_name.text.toString()
+            val code = et_code.text.toString()
+            when {
+                name.isEmpty() -> toast("Empty category")
+                code.isEmpty() -> toast("Empty code")
+                else -> viewModel.addAsset(name, code)
+            }
+        }
+    }
+
+    private fun setupStateObserver() {
+        viewModel.state.observe(viewLifecycleOwner) {
+            pb_loading.isVisible = it.isLoading
+            if (it.isSuccess) {
+                findNavController().popBackStack()
+            }
         }
     }
 
