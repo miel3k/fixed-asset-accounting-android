@@ -11,6 +11,7 @@ object Libraries {
         const val coroutinesAndroid = "1.3.2"
         const val barcodeScanner = "1.9.8"
         const val dexterPermissions = "6.0.2"
+        const val retrofit = "2.7.2"
     }
 
     const val kotlinStdLib =
@@ -37,4 +38,6 @@ object Libraries {
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesAndroid}"
     const val barcodeScanner = "me.dm7.barcodescanner:zxing:${Versions.barcodeScanner}"
     const val dexterPermissions = "com.karumi:dexter:${Versions.dexterPermissions}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
 }

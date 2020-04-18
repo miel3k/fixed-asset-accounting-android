@@ -53,6 +53,7 @@ class NewAssetFragment : Fragment(), KodeinAware {
 
     private fun setupAddButton() {
         btn_add.setOnClickListener {
+            viewModel.addAsset()
             toast("Add clicked")
         }
     }

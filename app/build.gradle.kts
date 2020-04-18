@@ -51,6 +51,8 @@ dependencies {
     implementation(Libraries.navigationCommonKtx)
     implementation(Libraries.roomRuntime)
     implementation(Libraries.roomKtx)
+    api(Libraries.retrofit)
+    api(Libraries.retrofitMoshiConverter)
 
     testImplementation(TestLibraries.junit)
     testImplementation(TestLibraries.room)
