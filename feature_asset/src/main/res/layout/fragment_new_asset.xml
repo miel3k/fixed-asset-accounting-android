@@ -7,13 +7,34 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/et_name"
+        android:id="@+id/et_asset_name"
         android:layout_width="240dp"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_et_background"
         android:elevation="2dp"
-        android:hint="Category"
+        android:hint="Asset Name"
+        android:inputType="text"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="10dp"
+        android:singleLine="true"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/et_document_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1" />
+
+    <EditText
+        android:id="@+id/et_document_name"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_et_background"
+        android:elevation="2dp"
+        android:hint="Document Name"
         android:inputType="text"
         android:paddingLeft="16dp"
         android:paddingTop="10dp"
@@ -24,7 +45,7 @@
         app:layout_constraintBottom_toTopOf="@id/et_code"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_asset_name"
         app:layout_constraintVertical_bias="1" />
 
     <EditText
@@ -43,10 +64,10 @@
         android:paddingBottom="15dp"
         android:textColor="@color/black_pearl"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        app:layout_constraintBottom_toTopOf="@id/rv_amortization_types"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_name"
+        app:layout_constraintTop_toBottomOf="@id/et_document_name"
         tools:text="000000000" />
 
     <View
@@ -78,6 +99,18 @@
         app:layout_constraintEnd_toEndOf="@id/et_code"
         app:layout_constraintTop_toTopOf="@id/et_code" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_amortization_types"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_code"
+        tools:listitem="@layout/item_amortization_type" />
+
     <Button
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
@@ -88,7 +121,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_code" />
+        app:layout_constraintTop_toBottomOf="@id/rv_amortization_types" />
 
     <ProgressBar
         android:id="@+id/pb_loading"

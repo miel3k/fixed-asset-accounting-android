@@ -3,6 +3,7 @@ package com.tp.fixedassetaccounting.feature.asset.presentation.newasset.viewmode
 import androidx.lifecycle.*
 import com.tp.fixedassetaccounting.feature.asset.domain.model.AmortizationType
 import com.tp.fixedassetaccounting.feature.asset.domain.model.AssetDomainModel
+import com.tp.fixedassetaccounting.feature.asset.domain.model.SelectableAmortizationType
 import com.tp.fixedassetaccounting.feature.asset.domain.usecase.AddAssetUseCase
 import kotlinx.coroutines.launch
 import java.time.Instant
@@ -42,8 +43,25 @@ internal class NewAssetViewModel(private val addAssetUseCase: AddAssetUseCase) :
         }
     }
 
+    fun selectAmortizationType(amortizationType: AmortizationType) {
+        val oldAmortizationTypes = state.value?.amortizationTypes.orEmpty()
+        val newAmortizationTypes = oldAmortizationTypes.map {
+            val isSelected = it.amortizationType.name == amortizationType.name
+            SelectableAmortizationType(it.amortizationType, isSelected)
+        }
+        mutableState.value = ViewState(
+            isLoading = false,
+            isSuccess = false,
+            amortizationTypes = newAmortizationTypes
+        )
+    }
+
     internal data class ViewState(
         val isLoading: Boolean = false,
-        val isSuccess: Boolean = false
+        val isSuccess: Boolean = false,
+        val amortizationTypes: List<SelectableAmortizationType> = listOf(
+            SelectableAmortizationType(AmortizationType.Linear, true),
+            SelectableAmortizationType(AmortizationType.Digressive, false)
+        )
     )
 }

@@ -25,6 +25,12 @@ class NewAssetFragment : Fragment(), KodeinAware {
 
     private val viewModel: NewAssetViewModel by instance()
 
+    private val amortizationTypesAdapter by lazy {
+        AmortizationTypesAdapter {
+            viewModel.selectAmortizationType(it)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,6 +48,7 @@ class NewAssetFragment : Fragment(), KodeinAware {
         super.onViewCreated(view, savedInstanceState)
         setupScanButton()
         setupAddButton()
+        setupAmortizationTypesRecyclerView()
         setupStateObserver()
     }
 
@@ -57,7 +64,7 @@ class NewAssetFragment : Fragment(), KodeinAware {
 
     private fun setupAddButton() {
         btn_add.setOnClickListener {
-            val name = et_name.text.toString()
+            val name = et_document_name.text.toString()
             val code = et_code.text.toString()
             when {
                 name.isEmpty() -> toast("Empty category")
@@ -67,12 +74,17 @@ class NewAssetFragment : Fragment(), KodeinAware {
         }
     }
 
+    private fun setupAmortizationTypesRecyclerView() {
+        rv_amortization_types.adapter = amortizationTypesAdapter
+    }
+
     private fun setupStateObserver() {
         viewModel.state.observe(viewLifecycleOwner) {
             pb_loading.isVisible = it.isLoading
             if (it.isSuccess) {
                 findNavController().popBackStack()
             }
+            amortizationTypesAdapter.updateAmortizationTypes(it.amortizationTypes)
         }
     }
 
