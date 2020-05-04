@@ -25,7 +25,7 @@ class AssetsFragment : Fragment(), KodeinAware {
 
     private val assetsAdapter by lazy {
         AssetsAdapter {
-            toast("Asset ${it.name} clicked")
+            toast("Asset ${it.assetName} clicked")
         }
     }
 

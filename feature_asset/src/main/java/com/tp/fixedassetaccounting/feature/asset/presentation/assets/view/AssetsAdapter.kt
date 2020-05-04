@@ -13,7 +13,7 @@ internal class AssetsAdapter(private val clickListener: (AssetDomainModel) -> Un
 
     private val asyncDiffer by lazy {
         val diffCallback = getDiffCallback<AssetDomainModel> { oldItem, newItem ->
-            oldItem.id == newItem.id
+            oldItem.assetName == newItem.assetName
         }
         AsyncListDiffer(this, diffCallback)
     }

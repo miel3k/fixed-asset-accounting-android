@@ -1,9 +1,11 @@
 package com.tp.fixedassetaccounting.feature.asset.presentation.newasset.viewmodel
 
 import androidx.lifecycle.*
+import com.tp.fixedassetaccounting.feature.asset.domain.model.AmortizationType
 import com.tp.fixedassetaccounting.feature.asset.domain.model.AssetDomainModel
 import com.tp.fixedassetaccounting.feature.asset.domain.usecase.AddAssetUseCase
 import kotlinx.coroutines.launch
+import java.time.Instant
 import java.util.*
 
 internal class NewAssetViewModel(private val addAssetUseCase: AddAssetUseCase) : ViewModel() {
@@ -24,7 +26,11 @@ internal class NewAssetViewModel(private val addAssetUseCase: AddAssetUseCase) :
         val asset = AssetDomainModel(
             UUID.randomUUID().toString(),
             name,
-            code
+            code,
+            Instant.now(),
+            0.0,
+            Instant.now(),
+            AmortizationType.Linear
         )
         viewModelScope.launch {
             val assetResult = addAssetUseCase.execute(asset)

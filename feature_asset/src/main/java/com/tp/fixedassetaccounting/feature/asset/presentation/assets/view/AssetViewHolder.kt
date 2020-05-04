@@ -11,7 +11,7 @@ internal class AssetViewHolder(
 ) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(asset: AssetDomainModel) {
-        setupName(asset.name)
+        setupName(asset.assetName)
         setupCode(asset.code)
         setupClickListener(asset)
     }
