@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -49,6 +50,8 @@ class NewAssetFragment : Fragment(), KodeinAware {
         setupScanButton()
         setupAddButton()
         setupAmortizationTypesRecyclerView()
+        setupCoefficientTextView()
+        setupCoefficientSeekBar()
         setupStateObserver()
     }
 
@@ -76,6 +79,24 @@ class NewAssetFragment : Fragment(), KodeinAware {
 
     private fun setupAmortizationTypesRecyclerView() {
         rv_amortization_types.adapter = amortizationTypesAdapter
+    }
+
+    private fun setupCoefficientTextView() {
+        tv_coefficient.text = 0f.toString()
+    }
+
+    private fun setupCoefficientSeekBar() {
+        sb_coefficient.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                tv_coefficient.text = String.format("%.1f", 0.1f * progress)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
     }
 
     private fun setupStateObserver() {

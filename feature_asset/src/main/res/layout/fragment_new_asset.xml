@@ -105,11 +105,36 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        app:layout_constraintBottom_toTopOf="@id/tv_coefficient"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_code"
         tools:listitem="@layout/item_amortization_type" />
+
+    <TextView
+        android:id="@+id/tv_coefficient"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/sb_coefficient"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="0.0" />
+
+    <SeekBar
+        android:id="@+id/sb_coefficient"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:max="20"
+        android:min="0"
+        android:progressTint="@color/mariner"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_amortization_types" />
 
     <Button
         android:id="@+id/btn_add"
@@ -121,7 +146,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_amortization_types" />
+        app:layout_constraintTop_toBottomOf="@id/sb_coefficient" />
 
     <ProgressBar
         android:id="@+id/pb_loading"
