@@ -30,5 +30,22 @@ sealed class AssetCategory(val id: Int, val name: String) {
             Tractor,
             MobilePhone
         )
+
+        fun from(id: String) = when (id.toIntOrNull() ?: Residence.id) {
+            Residence.id -> Residence
+            Garage.id -> Garage
+            SportBuilding.id -> SportBuilding
+            PowerBoiler.id -> PowerBoiler
+            GasEngine.id -> GasEngine
+            GasPump.id -> GasPump
+            Crystalizer.id -> Crystalizer
+            TechnicalEquipment.id -> TechnicalEquipment
+            Container.id -> Container
+            Car.id -> Car
+            Bus.id -> Bus
+            Tractor.id -> Tractor
+            MobilePhone.id -> MobilePhone
+            else -> Residence
+        }
     }
 }

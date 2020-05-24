@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneOffset
-import java.util.*
 
 internal class NewAssetViewModel(private val addAssetUseCase: AddAssetUseCase) : ViewModel() {
 
@@ -36,16 +35,19 @@ internal class NewAssetViewModel(private val addAssetUseCase: AddAssetUseCase) :
     val purchaseDate = MutableLiveData(Instant.now())
     val price = MutableLiveData(String.format("%.2f", 0.0f))
 
-    fun addAsset(name: String, code: String) {
+    fun addAsset(name: String, code: String, coefficient: Double) {
         mutableState.value = ViewState(isLoading = true, isSuccess = false)
         val asset = AssetDomainModel(
-            UUID.randomUUID().toString(),
-            name,
             code,
+            name,
+            AssetCategory.getAll()[requireNotNull(selectedCategoryIndex.value)],
+            purchaseDate.value ?: Instant.now(),
+            price.value?.toDoubleOrNull() ?: 0.0,
             Instant.now(),
-            0.0,
-            Instant.now(),
-            AmortizationType.Linear
+            coefficient,
+            amortizationTypes.value?.find {
+                it.isSelected
+            }?.amortizationType ?: AmortizationType.Linear
         )
         viewModelScope.launch {
             val assetResult = addAssetUseCase.execute(asset)

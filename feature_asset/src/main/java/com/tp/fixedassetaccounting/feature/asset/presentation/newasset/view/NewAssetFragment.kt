@@ -106,10 +106,11 @@ class NewAssetFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSetList
         btn_add.setOnClickListener {
             val name = et_document_name.text.toString()
             val code = et_code.text.toString()
+            val coefficient = 0.1f * sb_coefficient.progress
             when {
                 name.isEmpty() -> toast("Empty category")
                 code.isEmpty() -> toast("Empty code")
-                else -> viewModel.addAsset(name, code)
+                else -> viewModel.addAsset(name, code, coefficient.toDouble())
             }
         }
     }

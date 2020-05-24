@@ -12,7 +12,7 @@ internal class AssetViewHolder(
 
     fun bind(asset: AssetDomainModel) {
         setupName(asset.assetName)
-        setupCode(asset.code)
+        setupCode(asset.documentName)
         setupClickListener(asset)
     }
 
