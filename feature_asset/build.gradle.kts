@@ -33,7 +33,9 @@ android {
 
 dependencies {
     implementation(project(Modules.APP))
-    api(project(Modules.CORE))
+    implementation(project(Modules.CORE))
     implementation(Libraries.constraintLayout)
     implementation(Libraries.barcodeScanner)
+    implementation(Libraries.materialSpinner)
+    implementation(Libraries.materialDatePicker)
 }

@@ -14,13 +14,19 @@ import com.tp.feature_asset.R
 import com.tp.fixedassetaccounting.core.extension.observe
 import com.tp.fixedassetaccounting.core.extension.requestPermission
 import com.tp.fixedassetaccounting.core.extension.toast
+import com.tp.fixedassetaccounting.core.utils.TextWatcherUtils.addCurrencyFilter
+import com.tp.fixedassetaccounting.core.utils.TextWatcherUtils.getOnTextChangedListener
+import com.tp.fixedassetaccounting.core.utils.setTextSilently
 import com.tp.fixedassetaccounting.feature.asset.presentation.newasset.viewmodel.NewAssetViewModel
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import kotlinx.android.synthetic.main.fragment_new_asset.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
+import java.text.SimpleDateFormat
+import java.util.*
 
-class NewAssetFragment : Fragment(), KodeinAware {
+class NewAssetFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSetListener {
 
     override val kodein by kodein()
 
@@ -47,12 +53,43 @@ class NewAssetFragment : Fragment(), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupPriceEditText()
+        setupPurchaseDateButton()
         setupScanButton()
         setupAddButton()
+        setupCategorySpinner()
         setupAmortizationTypesRecyclerView()
         setupCoefficientTextView()
         setupCoefficientSeekBar()
         setupStateObserver()
+        setupAmortizationTypesObserver()
+        setupCategoriesObserver()
+        setupSelectedCategoryIndexObserver()
+        setupPurchaseDateObserver()
+    }
+
+    private fun setupPriceEditText() {
+        et_price.suffix = "PLN"
+        et_price.addCurrencyFilter()
+        val textWatcher = getOnTextChangedListener { text, _, _, _ ->
+            viewModel.setNewPrice(text.toString())
+        }
+        viewModel.price.observe(viewLifecycleOwner) {
+            et_price.setTextSilently(it, textWatcher)
+        }
+    }
+
+    private fun setupPurchaseDateButton() {
+        btn_purchase_date.setOnClickListener {
+            val now = Calendar.getInstance()
+            val dialog = DatePickerDialog.newInstance(
+                this,
+                now[Calendar.YEAR],
+                now[Calendar.MONTH],
+                now[Calendar.DAY_OF_MONTH]
+            )
+            dialog.show(parentFragmentManager, "PurchaseDateDialog")
+        }
     }
 
     private fun setupScanButton() {
@@ -74,6 +111,12 @@ class NewAssetFragment : Fragment(), KodeinAware {
                 code.isEmpty() -> toast("Empty code")
                 else -> viewModel.addAsset(name, code)
             }
+        }
+    }
+
+    private fun setupCategorySpinner() {
+        ms_category.setOnItemSelectedListener { _, _, _, item ->
+            viewModel.selectCategory(item as String)
         }
     }
 
@@ -105,8 +148,39 @@ class NewAssetFragment : Fragment(), KodeinAware {
             if (it.isSuccess) {
                 findNavController().popBackStack()
             }
-            amortizationTypesAdapter.updateAmortizationTypes(it.amortizationTypes)
+            sb_coefficient.isEnabled = it.isCoefficientEditEnabled
         }
+    }
+
+    private fun setupAmortizationTypesObserver() {
+        viewModel.amortizationTypes.observe(viewLifecycleOwner) {
+            amortizationTypesAdapter.updateAmortizationTypes(it)
+        }
+    }
+
+    private fun setupCategoriesObserver() {
+        viewModel.categories.observe(viewLifecycleOwner) { categories ->
+            val categoryNames = categories.map { it.name }
+            ms_category.setItems(categoryNames)
+        }
+    }
+
+    private fun setupSelectedCategoryIndexObserver() {
+        viewModel.selectedCategoryIndex.observe(viewLifecycleOwner) {
+            ms_category.selectedIndex = it
+        }
+    }
+
+    private fun setupPurchaseDateObserver() {
+        viewModel.purchaseDate.observe(viewLifecycleOwner) {
+            val date = Date.from(it)
+            val formatter = SimpleDateFormat.getDateInstance()
+            tv_purchase_date.text = formatter.format(date)
+        }
+    }
+
+    override fun onDateSet(view: DatePickerDialog?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
+        viewModel.selectPurchaseDate(year, monthOfYear, dayOfMonth)
     }
 
     private fun startBarcodeActivity() {

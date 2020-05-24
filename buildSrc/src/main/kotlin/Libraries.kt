@@ -40,4 +40,6 @@ object Libraries {
     const val dexterPermissions = "com.karumi:dexter:${Versions.dexterPermissions}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    const val materialSpinner = "com.jaredrummler:material-spinner:1.3.1"
+    const val materialDatePicker = "com.wdullaer:materialdatetimepicker:4.2.3"
 }
