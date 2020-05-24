@@ -1,198 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:fillViewport="true">
 
-    <EditText
-        android:id="@+id/et_document_name"
-        android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_et_background"
-        android:elevation="2dp"
-        android:hint="Document Name"
-        android:inputType="text"
-        android:paddingLeft="16dp"
-        android:paddingTop="10dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="10dp"
-        android:singleLine="true"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/btn_purchase_date"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_purchase_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/black_pearl"
-        app:layout_constraintBottom_toBottomOf="@id/btn_purchase_date"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btn_purchase_date"
-        app:layout_constraintTop_toTopOf="@id/btn_purchase_date"
-        tools:text="Apr 6, 2020" />
+        <EditText
+            android:id="@+id/et_document_name"
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_et_background"
+            android:elevation="2dp"
+            android:hint="Document Name"
+            android:inputType="text"
+            android:paddingLeft="16dp"
+            android:paddingTop="10dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="10dp"
+            android:singleLine="true"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/btn_purchase_date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1" />
 
-    <Button
-        android:id="@+id/btn_purchase_date"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_btn_background"
-        android:text="Choose date"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/et_code"
-        app:layout_constraintLeft_toRightOf="@id/tv_purchase_date"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_document_name" />
+        <TextView
+            android:id="@+id/tv_purchase_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black_pearl"
+            app:layout_constraintBottom_toBottomOf="@id/btn_purchase_date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/btn_purchase_date"
+            app:layout_constraintTop_toTopOf="@id/btn_purchase_date"
+            tools:text="Apr 6, 2020" />
 
-    <EditText
-        android:id="@+id/et_code"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_et_background"
-        android:elevation="2dp"
-        android:ellipsize="end"
-        android:hint="Code"
-        android:inputType="number"
-        android:maxLines="1"
-        android:paddingLeft="20dp"
-        android:paddingTop="15dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="15dp"
-        android:textColor="@color/black_pearl"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/et_price"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_purchase_date"
-        tools:text="000000000" />
+        <Button
+            android:id="@+id/btn_purchase_date"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_btn_background"
+            android:text="Choose date"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/et_code"
+            app:layout_constraintLeft_toRightOf="@id/tv_purchase_date"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_document_name" />
 
-    <View
-        android:id="@+id/v_separator"
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="14dp"
-        android:background="@color/whisper"
-        android:elevation="2dp"
-        app:layout_constraintBottom_toBottomOf="@id/et_code"
-        app:layout_constraintEnd_toStartOf="@id/tv_scan"
-        app:layout_constraintTop_toTopOf="@id/et_code" />
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_et_background"
+            android:elevation="2dp"
+            android:ellipsize="end"
+            android:hint="Code"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="15dp"
+            android:textColor="@color/black_pearl"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/et_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_purchase_date"
+            tools:text="000000000" />
 
-    <Button
-        android:id="@+id/tv_scan"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:elevation="2dp"
-        android:gravity="center"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:text="Scan"
-        android:textAllCaps="true"
-        android:textColor="@color/mariner"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/et_code"
-        app:layout_constraintEnd_toEndOf="@id/et_code"
-        app:layout_constraintTop_toTopOf="@id/et_code" />
+        <View
+            android:id="@+id/v_separator"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            android:background="@color/whisper"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="@id/et_code"
+            app:layout_constraintEnd_toStartOf="@id/tv_scan"
+            app:layout_constraintTop_toTopOf="@id/et_code" />
 
-    <com.tp.fixedassetaccounting.core.view.SuffixEditText
-        android:id="@+id/et_price"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/rounded_et_background"
-        android:digits="0123456789,."
-        android:elevation="3dp"
-        android:ellipsize="end"
-        android:inputType="numberDecimal"
-        android:longClickable="false"
-        android:maxLines="1"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:selectAllOnFocus="true"
-        android:textColor="@color/black_pearl"
-        android:textDirection="inherit"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/ms_category"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_code"
-        tools:text="0,00" />
+        <Button
+            android:id="@+id/tv_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Scan"
+            android:textAllCaps="true"
+            android:textColor="@color/mariner"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/et_code"
+            app:layout_constraintEnd_toEndOf="@id/et_code"
+            app:layout_constraintTop_toTopOf="@id/et_code" />
 
-    <com.jaredrummler.materialspinner.MaterialSpinner
-        android:id="@+id/ms_category"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        app:layout_constraintBottom_toTopOf="@id/rv_amortization_types"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_price" />
+        <com.tp.fixedassetaccounting.core.view.SuffixEditText
+            android:id="@+id/et_price"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_et_background"
+            android:digits="0123456789,."
+            android:elevation="3dp"
+            android:ellipsize="end"
+            android:inputType="numberDecimal"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:selectAllOnFocus="true"
+            android:textColor="@color/black_pearl"
+            android:textDirection="inherit"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/ms_category"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_code"
+            tools:text="0,00" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_amortization_types"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/tv_coefficient"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ms_category"
-        tools:listitem="@layout/item_amortization_type" />
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/ms_category"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            app:layout_constraintBottom_toTopOf="@id/rv_amortization_types"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_price" />
 
-    <TextView
-        android:id="@+id/tv_coefficient"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="8dp"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/sb_coefficient"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:text="0.0" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_amortization_types"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/tv_coefficient"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ms_category"
+            tools:listitem="@layout/item_amortization_type" />
 
-    <SeekBar
-        android:id="@+id/sb_coefficient"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:max="20"
-        android:min="0"
-        android:progressTint="@color/mariner"
-        app:layout_constraintBottom_toTopOf="@id/btn_add"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_amortization_types" />
+        <TextView
+            android:id="@+id/tv_coefficient"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/sb_coefficient"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="0.0" />
 
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_btn_background"
-        android:text="Add"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sb_coefficient" />
+        <SeekBar
+            android:id="@+id/sb_coefficient"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:max="20"
+            android:min="0"
+            android:progressTint="@color/mariner"
+            app:layout_constraintBottom_toTopOf="@id/btn_add"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_amortization_types" />
 
-    <ProgressBar
-        android:id="@+id/pb_loading"
-        style="?android:progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_btn_background"
+            android:text="Add"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sb_coefficient" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            style="?android:progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
