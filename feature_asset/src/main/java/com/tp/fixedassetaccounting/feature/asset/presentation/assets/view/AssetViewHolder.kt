@@ -53,7 +53,7 @@ internal class AssetViewHolder(
     }
 
     private fun setupClickListener(asset: AssetDomainModel) {
-        itemView.setOnClickListener {
+        itemView.btn_details.setOnClickListener {
             clickListener(asset)
         }
     }

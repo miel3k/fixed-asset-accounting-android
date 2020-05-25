@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tv_asset_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_label_black_24dp"
+        android:drawablePadding="8dp"
+        android:ellipsize="end"
+        android:gravity="start|center"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tv_document_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_purchase_date"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Macbook Pro 13" />
+
+    <TextView
+        android:id="@+id/tv_purchase_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_date_range_black_24dp"
+        android:drawablePadding="8dp"
+        android:gravity="start|center"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tv_asset_name"
+        app:layout_constraintLeft_toRightOf="@id/tv_asset_name"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_asset_name"
+        tools:text="2020-05-13" />
+
+    <TextView
+        android:id="@+id/tv_document_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_content_paste_black_24dp"
+        android:drawablePadding="8dp"
+        android:ellipsize="end"
+        android:gravity="start|center"
+        android:maxLines="1"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_amortization_type"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_price"
+        app:layout_constraintTop_toBottomOf="@id/tv_asset_name"
+        tools:text="VAT Invoice" />
+
+    <TextView
+        android:id="@+id/tv_amortization_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_equalizer_black_24dp"
+        android:drawablePadding="8dp"
+        android:ellipsize="end"
+        android:gravity="start|center"
+        android:maxLines="1"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@id/et_date"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_price"
+        app:layout_constraintTop_toBottomOf="@id/tv_document_name"
+        tools:text="LINEAR" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_attach_money_black_24dp"
+        android:drawablePadding="8dp"
+        android:ellipsize="end"
+        android:gravity="start|center"
+        android:maxLines="1"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_document_name"
+        app:layout_constraintLeft_toRightOf="@id/tv_document_name"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_purchase_date"
+        tools:text="2.00 PLN" />
+
+    <EditText
+        android:id="@+id/et_date"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_et_background"
+        android:elevation="2dp"
+        android:hint="End amortization date"
+        android:inputType="date"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="10dp"
+        android:singleLine="true"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/bc_amortization"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_amortization_type"
+        app:layout_constraintVertical_bias="1" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/bc_amortization"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_date" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

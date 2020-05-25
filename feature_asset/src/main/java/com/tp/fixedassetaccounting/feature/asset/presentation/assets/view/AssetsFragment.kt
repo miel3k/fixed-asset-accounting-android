@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tp.feature_asset.R
 import com.tp.fixedassetaccounting.core.extension.observe
-import com.tp.fixedassetaccounting.core.extension.toast
 import com.tp.fixedassetaccounting.feature.asset.presentation.assets.viewmodel.AssetsViewModel
 import kotlinx.android.synthetic.main.fragment_assets.*
 import org.kodein.di.KodeinAware
@@ -25,7 +24,8 @@ class AssetsFragment : Fragment(), KodeinAware {
 
     private val assetsAdapter by lazy {
         AssetsAdapter {
-            toast("Asset ${it.assetName} clicked")
+            val navDirections = AssetsFragmentDirections.openAssetDetailsFragment()
+            findNavController().navigate(navDirections)
         }
     }
 

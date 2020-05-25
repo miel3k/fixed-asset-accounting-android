@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import com.tp.fixedassetaccounting.core.ViewModelSupplier
 import com.tp.fixedassetaccounting.feature.asset.FEATURE_NAME
 import com.tp.fixedassetaccounting.feature.asset.presentation.assets.viewmodel.AssetsViewModel
+import com.tp.fixedassetaccounting.feature.asset.presentation.details.viewmodel.AssetDetailsViewModel
 import com.tp.fixedassetaccounting.feature.asset.presentation.newasset.viewmodel.NewAssetViewModel
 import org.kodein.di.Kodein
 import org.kodein.di.android.x.AndroidLifecycleScope
@@ -20,5 +21,9 @@ internal val presentationModule = Kodein.Module("${FEATURE_NAME}PresentationModu
 
     bind<NewAssetViewModel>() with scoped<Fragment>(AndroidLifecycleScope).singleton {
         ViewModelSupplier.of(context) { NewAssetViewModel(instance()) }
+    }
+
+    bind<AssetDetailsViewModel>() with scoped<Fragment>(AndroidLifecycleScope).singleton {
+        ViewModelSupplier.of(context) { AssetDetailsViewModel() }
     }
 }

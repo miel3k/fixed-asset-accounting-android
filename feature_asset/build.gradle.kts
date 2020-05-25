@@ -38,4 +38,5 @@ dependencies {
     implementation(Libraries.barcodeScanner)
     implementation(Libraries.materialSpinner)
     implementation(Libraries.materialDatePicker)
+    implementation(Libraries.mpAndroidChart)
 }
