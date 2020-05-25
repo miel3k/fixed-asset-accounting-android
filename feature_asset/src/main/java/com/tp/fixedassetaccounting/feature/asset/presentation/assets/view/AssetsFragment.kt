@@ -24,7 +24,7 @@ class AssetsFragment : Fragment(), KodeinAware {
 
     private val assetsAdapter by lazy {
         AssetsAdapter {
-            val navDirections = AssetsFragmentDirections.openAssetDetailsFragment()
+            val navDirections = AssetsFragmentDirections.openAssetDetailsFragment(it.assetName)
             findNavController().navigate(navDirections)
         }
     }

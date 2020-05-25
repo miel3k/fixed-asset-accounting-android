@@ -96,9 +96,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_et_background"
+        android:clickable="true"
+        android:editable="false"
         android:elevation="2dp"
+        android:focusable="false"
         android:hint="End amortization date"
         android:inputType="date"
+        android:longClickable="false"
         android:paddingLeft="16dp"
         android:paddingTop="10dp"
         android:paddingRight="16dp"
@@ -119,5 +123,15 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_date" />
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        style="?android:progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

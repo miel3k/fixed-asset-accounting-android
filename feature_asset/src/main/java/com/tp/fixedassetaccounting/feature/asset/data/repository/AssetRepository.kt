@@ -5,6 +5,7 @@ import com.tp.fixedassetaccounting.core.MediaTypes
 import com.tp.fixedassetaccounting.feature.asset.data.model.AssetDataModel
 import com.tp.fixedassetaccounting.feature.asset.data.model.toDomainModel
 import com.tp.fixedassetaccounting.feature.asset.data.repository.remote.AssetService
+import com.tp.fixedassetaccounting.feature.asset.domain.model.AssetAmortizationDomainModel
 import com.tp.fixedassetaccounting.feature.asset.domain.model.AssetDomainModel
 import com.tp.fixedassetaccounting.feature.asset.domain.repository.AssetDataSource
 import okhttp3.MediaType
@@ -27,5 +28,14 @@ internal class AssetRepository(private val assetService: AssetService) : AssetDa
         } else {
             null
         }
+    }
+
+    override suspend fun getAssetAmortization(
+        assetName: String,
+        date: String
+    ): AssetAmortizationDomainModel? {
+        val headers = mutableMapOf<String, String>()
+        val query = mapOf("date" to date)
+        return assetService.getAssetAmortizationAsync(headers, assetName, query)?.toDomainModel()
     }
 }

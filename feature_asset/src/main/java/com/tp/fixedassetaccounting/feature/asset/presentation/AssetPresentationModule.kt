@@ -24,6 +24,6 @@ internal val presentationModule = Kodein.Module("${FEATURE_NAME}PresentationModu
     }
 
     bind<AssetDetailsViewModel>() with scoped<Fragment>(AndroidLifecycleScope).singleton {
-        ViewModelSupplier.of(context) { AssetDetailsViewModel() }
+        ViewModelSupplier.of(context) { AssetDetailsViewModel(instance()) }
     }
 }

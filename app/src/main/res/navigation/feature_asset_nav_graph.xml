@@ -24,6 +24,10 @@
     <fragment
         android:id="@+id/asset_details_fragment"
         android:name="com.tp.fixedassetaccounting.feature.asset.presentation.details.view.AssetDetailsFragment"
-        android:label="Assets" />
+        android:label="Assets">
+        <argument
+            android:name="asset_name"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
