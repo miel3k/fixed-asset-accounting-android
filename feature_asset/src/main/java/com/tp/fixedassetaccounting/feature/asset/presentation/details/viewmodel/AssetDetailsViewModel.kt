@@ -35,6 +35,7 @@ internal class AssetDetailsViewModel(private val getAssetAmortizationUseCase: Ge
 
     private fun loadAssetAmortization(assetName: String, date: Instant) {
         viewModelScope.launch {
+            mutableState.value = ViewState(isLoading = true)
             val amortizationResult = getAssetAmortizationUseCase.execute(assetName, date)
             if (amortizationResult != null) {
                 mutableState.value = ViewState(isLoading = false)

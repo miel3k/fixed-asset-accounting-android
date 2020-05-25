@@ -77,7 +77,7 @@ class AssetDetailsFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSet
         viewModel.amortizationDate.observe(viewLifecycleOwner) {
             val date = Date.from(it)
             val formatter = SimpleDateFormat.getDateInstance()
-            tv_purchase_date.text = formatter.format(date)
+            et_date.setText(formatter.format(date))
         }
     }
 
