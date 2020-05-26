@@ -1,18 +1,13 @@
 package com.tp.fixedassetaccounting.feature.asset.presentation.details.viewmodel
 
 import androidx.lifecycle.*
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.utils.ColorTemplate
+import com.anychart.chart.common.dataentry.DataEntry
+import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.tp.fixedassetaccounting.feature.asset.data.model.toDomainModel
 import com.tp.fixedassetaccounting.feature.asset.domain.model.AssetDomainModel
 import com.tp.fixedassetaccounting.feature.asset.domain.usecase.GetAssetAmortizationUseCase
 import kotlinx.coroutines.launch
-import java.time.Instant
-import java.time.LocalDate
-import java.time.ZoneOffset
-import java.util.*
+import java.time.*
 
 internal class AssetDetailsViewModel(private val getAssetAmortizationUseCase: GetAssetAmortizationUseCase) :
     ViewModel() {
@@ -38,14 +33,14 @@ internal class AssetDetailsViewModel(private val getAssetAmortizationUseCase: Ge
         }
     }
     val amortizationDate = MutableLiveData(Instant.now())
-    val amortizationBarData = MutableLiveData<BarData>()
+    val amortizationBarDataEntries = MutableLiveData<List<DataEntry>>()
 
     fun setup(newAssetName: String) {
         assetName = newAssetName
     }
 
     fun selectDate(year: Int, monthOfYear: Int, dayOfMonth: Int, assetName: String) {
-        val localDate = LocalDate.of(year, monthOfYear, dayOfMonth)
+        val localDate = LocalDate.of(year, monthOfYear + 1, dayOfMonth)
         val date = localDate.atStartOfDay().toInstant(ZoneOffset.UTC)
         amortizationDate.value = date
         loadAssetAmortization(assetName, date)
@@ -57,14 +52,16 @@ internal class AssetDetailsViewModel(private val getAssetAmortizationUseCase: Ge
             val amortizationResult = getAssetAmortizationUseCase.load(assetName, date)
             if (amortizationResult != null) {
                 mutableState.value = ViewState(isLoading = false)
-                val entries = amortizationResult.monthEntries.mapIndexed { index, item ->
-                    val startDate = Date.from(item.monthStartDate)
-                    BarEntry((startDate.month).toFloat(), item.amortizationAmount.toFloat())
+                val entries = amortizationResult.monthEntries.map {
+                    val startDate = LocalDateTime
+                        .ofInstant(it.monthStartDate, ZoneId.systemDefault())
+                        .toLocalDate()
+                    ValueDataEntry(
+                        MONTHS.getValue(startDate.monthValue) + " " + startDate.year,
+                        it.amortizationAmount.toFloat()
+                    )
                 }
-                val set = BarDataSet(entries, "Label").apply {
-                    setColors(*ColorTemplate.VORDIPLOM_COLORS)
-                }
-                amortizationBarData.value = BarData(set)
+                amortizationBarDataEntries.value = entries
             } else {
                 mutableState.value = ViewState(isLoading = false)
             }
@@ -72,4 +69,21 @@ internal class AssetDetailsViewModel(private val getAssetAmortizationUseCase: Ge
     }
 
     internal data class ViewState(val isLoading: Boolean = false)
+
+    private companion object {
+        val MONTHS = mapOf(
+            0 to "Jan",
+            1 to "Feb",
+            2 to "Mar",
+            3 to "Apr",
+            4 to "May",
+            5 to "Jun",
+            6 to "Jul",
+            7 to "Aug",
+            8 to "Sep",
+            9 to "Oct",
+            10 to "Nov",
+            11 to "Dec"
+        ).withDefault { "" }
+    }
 }

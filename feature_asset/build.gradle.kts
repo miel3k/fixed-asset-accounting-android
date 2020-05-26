@@ -39,7 +39,7 @@ dependencies {
     implementation(Libraries.barcodeScanner)
     implementation(Libraries.materialSpinner)
     implementation(Libraries.materialDatePicker)
-    implementation(Libraries.mpAndroidChart)
+    implementation(Libraries.anyChart)
     implementation(Libraries.roomRuntime)
     implementation(Libraries.roomKtx)
     kapt(Libraries.roomCompiler)

@@ -7,6 +7,11 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.anychart.AnyChart
+import com.anychart.enums.Anchor
+import com.anychart.enums.HoverMode
+import com.anychart.enums.Position
+import com.anychart.enums.TooltipPositionMode
 import com.tp.feature_asset.R
 import com.tp.fixedassetaccounting.core.extension.observe
 import com.tp.fixedassetaccounting.feature.asset.presentation.details.viewmodel.AssetDetailsViewModel
@@ -17,6 +22,7 @@ import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class AssetDetailsFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSetListener {
 
@@ -75,18 +81,26 @@ class AssetDetailsFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSet
     }
 
     private fun setupAmortizationBarDataObserver() {
-        viewModel.amortizationBarData.observe(viewLifecycleOwner) {
-            bc_amortization.run {
-                description.isEnabled = true
-                setDrawGridBackground(false)
-                setDrawBarShadow(false)
-                data = it
-                axisLeft.axisMinimum = 0f
-                axisRight.isEnabled = false
-                xAxis.isEnabled = true
-                xAxis.valueFormatter = MonthValueFormatter()
-                invalidate()
+        viewModel.amortizationBarDataEntries.observe(viewLifecycleOwner) {
+            val chart = AnyChart.column().apply {
+                column(it).tooltip()
+                    .titleFormat("{%X}")
+                    .position(Position.CENTER_BOTTOM)
+                    .anchor(Anchor.CENTER_BOTTOM)
+                    .offsetX(0.0)
+                    .offsetY(5.0)
+                    .format("PLN {%Value}{groupsSeparator: }")
+                animation(true)
+                title("Amortization")
+                yScale().minimum(0.0)
+                yAxis(0).labels().format("PLN {%Value}{groupsSeparator: }")
+                tooltip().positionMode(TooltipPositionMode.POINT)
+                interactivity().hoverMode(HoverMode.BY_X)
+                yAxis(0).title("Amount")
+                xAxis(0).staggerMaxLines(10)
+                xScroller(true)
             }
+            bc_amortization.setChart(chart)
         }
     }
 

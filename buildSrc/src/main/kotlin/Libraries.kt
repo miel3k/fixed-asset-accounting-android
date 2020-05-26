@@ -43,5 +43,5 @@ object Libraries {
     const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     const val materialSpinner = "com.jaredrummler:material-spinner:1.3.1"
     const val materialDatePicker = "com.wdullaer:materialdatetimepicker:4.2.3"
-    const val mpAndroidChart = "com.github.PhilJay:MPAndroidChart:v3.1.0"
+    const val anyChart = "com.github.AnyChart:AnyChart-Android:1.1.2"
 }
