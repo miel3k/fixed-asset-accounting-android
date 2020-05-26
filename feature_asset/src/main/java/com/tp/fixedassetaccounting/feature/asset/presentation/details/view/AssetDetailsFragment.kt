@@ -33,8 +33,10 @@ class AssetDetailsFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSet
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.setup(assetDetailsArgs.assetName)
         setupDateEditText()
         setupStateObserver()
+        setupAssetObserver()
         setupAmortizationBarDataObserver()
         setupAmortizationDateObserver()
     }
@@ -55,6 +57,20 @@ class AssetDetailsFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSet
     private fun setupStateObserver() {
         viewModel.state.observe(viewLifecycleOwner) {
             pb_loading.isVisible = it.isLoading
+        }
+    }
+
+    private fun setupAssetObserver() {
+        viewModel.asset.observe(viewLifecycleOwner) {
+            tv_asset_name.text = it.assetName
+            val date = Date.from(it.purchaseDate)
+            val formatter = SimpleDateFormat.getDateInstance()
+            tv_purchase_date.text = formatter.format(date)
+            tv_document_name.text = it.documentName
+            val priceText = "${it.purchaseAmount} PLN"
+            tv_price.text = priceText
+            tv_amortization_type.text = it.amortizationType.name
+            tv_amortization_coefficient.text = it.coefficient.toString()
         }
     }
 

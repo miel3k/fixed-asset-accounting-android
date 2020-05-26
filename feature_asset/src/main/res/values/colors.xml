@@ -5,4 +5,5 @@
     <color name="white">#FFFFFF</color>
     <color name="solitude">#E8E9EC</color>
     <color name="whisper">#EDEDED</color>
+    <color name="black">#FF000000</color>
 </resources>

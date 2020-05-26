@@ -3,6 +3,7 @@ plugins {
     id(Plugins.kotlinAndroid)
     id(Plugins.kotlinAndroidExtensions)
     id(Plugins.kotlinAndroidSafeArgs)
+    id(Plugins.kotlinKapt)
 }
 
 android {
@@ -39,4 +40,8 @@ dependencies {
     implementation(Libraries.materialSpinner)
     implementation(Libraries.materialDatePicker)
     implementation(Libraries.mpAndroidChart)
+    implementation(Libraries.roomRuntime)
+    implementation(Libraries.roomKtx)
+    kapt(Libraries.roomCompiler)
+    testImplementation(TestLibraries.room)
 }

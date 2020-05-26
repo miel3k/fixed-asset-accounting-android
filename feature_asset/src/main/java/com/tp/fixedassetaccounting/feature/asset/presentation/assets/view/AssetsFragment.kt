@@ -40,6 +40,7 @@ class AssetsFragment : Fragment(), KodeinAware {
         setupRecyclerView()
         setupFloatingActionButton()
         setupStateObserver()
+        setupAssetsObserver()
         viewModel.loadData()
     }
 
@@ -59,9 +60,14 @@ class AssetsFragment : Fragment(), KodeinAware {
 
     private fun setupStateObserver() {
         viewModel.state.observe(viewLifecycleOwner) {
-            assetsAdapter.updateAssets(it.assets)
             pb_loading.isVisible = it.isLoading
             iv_no_assets.isVisible = it.isError
+        }
+    }
+
+    private fun setupAssetsObserver() {
+        viewModel.assets.observe(viewLifecycleOwner) {
+            assetsAdapter.updateAssets(it)
         }
     }
 }

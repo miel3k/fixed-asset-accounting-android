@@ -49,13 +49,10 @@ dependencies {
     implementation(Libraries.navigationFragmentKtx)
     implementation(Libraries.navigationUiKtx)
     implementation(Libraries.navigationCommonKtx)
-    implementation(Libraries.roomRuntime)
-    implementation(Libraries.roomKtx)
     api(Libraries.retrofit)
     api(Libraries.retrofitMoshiConverter)
 
     testImplementation(TestLibraries.junit)
-    testImplementation(TestLibraries.room)
     androidTestImplementation(TestLibraries.junitExt)
     androidTestImplementation(TestLibraries.testRunner)
     androidTestImplementation(TestLibraries.espresso)

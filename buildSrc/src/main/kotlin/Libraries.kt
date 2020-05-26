@@ -32,6 +32,7 @@ object Libraries {
         "androidx.navigation:navigation-common-ktx:${Versions.navigation}"
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+    const val roomCompiler = "android.arch.persistence.room:compiler:1.0.0"
     const val kodein = "org.kodein.di:kodein-di-generic-jvm:${Versions.kodein}"
     const val kodeinAndroidX = "org.kodein.di:kodein-di-framework-android-x:${Versions.kodein}"
     const val coroutinesAndroid =
