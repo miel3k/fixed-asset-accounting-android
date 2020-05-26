@@ -83,7 +83,8 @@ class AssetDetailsFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSet
                 data = it
                 axisLeft.axisMinimum = 0f
                 axisRight.isEnabled = false
-                xAxis.isEnabled = false
+                xAxis.isEnabled = true
+                xAxis.valueFormatter = MonthValueFormatter()
                 invalidate()
             }
         }

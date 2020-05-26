@@ -59,7 +59,7 @@ internal class AssetDetailsViewModel(private val getAssetAmortizationUseCase: Ge
                 mutableState.value = ViewState(isLoading = false)
                 val entries = amortizationResult.monthEntries.mapIndexed { index, item ->
                     val startDate = Date.from(item.monthStartDate)
-                    BarEntry((index + 1).toFloat(), item.amortizationAmount.toFloat())
+                    BarEntry((startDate.month).toFloat(), item.amortizationAmount.toFloat())
                 }
                 val set = BarDataSet(entries, "Label").apply {
                     setColors(*ColorTemplate.VORDIPLOM_COLORS)
