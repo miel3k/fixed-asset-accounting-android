@@ -34,7 +34,7 @@ internal class AssetViewHolder(
     }
 
     private fun setupPrice(purchaseAmount: Double) {
-        val priceText = "${purchaseAmount}PLN"
+        val priceText = "$purchaseAmount PLN"
         itemView.tv_price.text = priceText
     }
 
