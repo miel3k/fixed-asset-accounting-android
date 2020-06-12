@@ -21,6 +21,8 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 import java.text.SimpleDateFormat
+import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.util.*
 
 
@@ -49,13 +51,17 @@ class AssetDetailsFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSet
 
     private fun setupDateEditText() {
         et_date.setOnClickListener {
+            val amortizationDate = requireNotNull(viewModel.amortizationDate.value)
+            val zonedDateTime = ZonedDateTime.ofInstant(amortizationDate, ZoneId.systemDefault())
             val now = Calendar.getInstance()
             val dialog = DatePickerDialog.newInstance(
                 this,
                 now[Calendar.YEAR],
                 now[Calendar.MONTH],
                 now[Calendar.DAY_OF_MONTH]
-            )
+            ).apply {
+                minDate = GregorianCalendar.from(zonedDateTime)
+            }
             dialog.show(parentFragmentManager, "AmortizationDateDialog")
         }
     }

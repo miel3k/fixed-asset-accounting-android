@@ -47,7 +47,7 @@ class NewAssetFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSetList
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == BarcodeActivity.REQUEST_CODE) {
             val barcode = data?.extras?.getString(BarcodeActivity.BARCODE)
-            //TODO Handle barcode
+            et_code.setText(barcode.orEmpty())
         }
     }
 
