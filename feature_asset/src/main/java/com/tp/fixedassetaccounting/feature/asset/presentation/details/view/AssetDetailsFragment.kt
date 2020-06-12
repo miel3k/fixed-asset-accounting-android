@@ -51,7 +51,7 @@ class AssetDetailsFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSet
 
     private fun setupDateEditText() {
         et_date.setOnClickListener {
-            val amortizationDate = requireNotNull(viewModel.amortizationDate.value)
+            val amortizationDate = requireNotNull(viewModel.asset.value?.entryDate)
             val zonedDateTime = ZonedDateTime.ofInstant(amortizationDate, ZoneId.systemDefault())
             val now = Calendar.getInstance()
             val dialog = DatePickerDialog.newInstance(
