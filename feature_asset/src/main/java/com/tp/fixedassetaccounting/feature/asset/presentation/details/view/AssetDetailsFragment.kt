@@ -87,26 +87,28 @@ class AssetDetailsFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSet
     }
 
     private fun setupAmortizationBarDataObserver() {
+        val chart = AnyChart.column().apply {
+            tooltip()
+                .titleFormat("{%X}")
+                .position(Position.CENTER_BOTTOM)
+                .anchor(Anchor.CENTER_BOTTOM)
+                .offsetX(0.0)
+                .offsetY(5.0)
+                .format("PLN {%Value}{groupsSeparator: }")
+            animation(true)
+            title("Amortization")
+            yScale().minimum(0.0)
+            yAxis(0).labels().format("PLN {%Value}{groupsSeparator: }")
+            tooltip().positionMode(TooltipPositionMode.POINT)
+            interactivity().hoverMode(HoverMode.BY_X)
+            yAxis(0).title("Amount")
+            xAxis(0).staggerMaxLines(10)
+            xScroller(true)
+        }
+        bc_amortization.setChart(chart)
         viewModel.amortizationBarDataEntries.observe(viewLifecycleOwner) {
-            val chart = AnyChart.column().apply {
-                column(it).tooltip()
-                    .titleFormat("{%X}")
-                    .position(Position.CENTER_BOTTOM)
-                    .anchor(Anchor.CENTER_BOTTOM)
-                    .offsetX(0.0)
-                    .offsetY(5.0)
-                    .format("PLN {%Value}{groupsSeparator: }")
-                animation(true)
-                title("Amortization")
-                yScale().minimum(0.0)
-                yAxis(0).labels().format("PLN {%Value}{groupsSeparator: }")
-                tooltip().positionMode(TooltipPositionMode.POINT)
-                interactivity().hoverMode(HoverMode.BY_X)
-                yAxis(0).title("Amount")
-                xAxis(0).staggerMaxLines(it.size)
-                xScroller(true)
-            }
-            bc_amortization.setChart(chart)
+            chart.yAxis(0).staggerMaxLines(it.size)
+            chart.data(it)
         }
     }
 
