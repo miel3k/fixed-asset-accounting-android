@@ -103,7 +103,7 @@ class AssetDetailsFragment : Fragment(), KodeinAware, DatePickerDialog.OnDateSet
                 tooltip().positionMode(TooltipPositionMode.POINT)
                 interactivity().hoverMode(HoverMode.BY_X)
                 yAxis(0).title("Amount")
-                xAxis(0).staggerMaxLines(10)
+                xAxis(0).staggerMaxLines(it.size)
                 xScroller(true)
             }
             bc_amortization.setChart(chart)
