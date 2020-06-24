@@ -15,12 +15,16 @@ import kotlinx.android.synthetic.main.fragment_assets.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
+import java.util.*
+import kotlin.concurrent.timerTask
 
 class AssetsFragment : Fragment(), KodeinAware {
 
     override val kodein by kodein()
 
     private val viewModel: AssetsViewModel by instance()
+
+    private lateinit var timer: Timer
 
     private val assetsAdapter by lazy {
         AssetsAdapter {
@@ -42,6 +46,24 @@ class AssetsFragment : Fragment(), KodeinAware {
         setupStateObserver()
         setupAssetsObserver()
         viewModel.loadData()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        timer.cancel()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupLoadAssetsTimerTask()
+    }
+
+    private fun setupLoadAssetsTimerTask() {
+        timer = Timer()
+        val timerTask = timerTask {
+            viewModel.loadData()
+        }
+        timer.schedule(timerTask, 60000L, 60000L)
     }
 
     private fun setupRecyclerView() {
